@@ -73,7 +73,7 @@ graph TD
 ## 🛠️ Tech Stack
 
 * **Frontend Framework**: Streamlit (Python) featuring custom CSS **Glassmorphism design tokens** (`backdrop-filter: blur`, dynamic dark-mode mesh gradients, and polished box-shadow hierarchies).
-* **AI & Language Processing**: OpenAI API (`gpt-4o`) optimized with strict JSON schema outputs and multi-language systemic prompts.
+* **AI & Language Processing**: Gemini API optimized with strict JSON schema outputs and multi-language systemic prompts.
 * **Geospatial UI**: Google Maps Embed API.
 * **Document Parsers**: `pypdf` and `python-docx` for native binary file extraction.
 
