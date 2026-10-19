@@ -37,3 +37,63 @@ Whether you need to inspect an unfamiliar prescription drug composition, locate 
 ---
 
 ## 🏗️ Core Modules & Architecture
+┌────────────────────────────────────────────────────────┐
+│               NovaMed Master Interface                 │
+│         (Glassmorphic Streamlit Frontend Engine)       │
+└──────────────────────────┬─────────────────────────────┘
+│
+┌───────────────────┼───────────────────┐
+▼                   ▼                   ▼
+┌──────────────┐    ┌──────────────┐    ┌──────────────┐
+│ 🌐 Multi-    │    │ 💊 Smart     │    │ 🗺️ Geo-      │
+│ Lang Engine  │    │ Pharmacy     │    │ Medical Map  │
+│ (22+ Indian) │    │ Inspector    │    │ Locator      │
+└──────────────┘    └──────────────┘    └──────────────┘
+│                   │                   │
+└───────────────────┼───────────────────┘
+▼
+┌─────────────────────────┐
+│ 🤖 AI Triage & OCR Core │
+│   (GPT-4o + PyPDF/Docx) │
+└─────────────────────────┘
+
+### 1. 🌐 Pan-India Multi-Language Engine
+* **Universal Localization**: Seamlessly shifts UI components, error messages, medical reports, and directory listings across **22 Scheduled Indian Languages** (including Hindi, Marathi, Kannada, Telugu, Tamil, Bengali, Gujarati, etc.) alongside English.
+
+### 2. 💊 Smart Pharmacy & Drug Inspector
+* **Universal Item Analysis**: Instantly decodes brand names, generic salts, syrups, topical creams, syringes, surgical tools, and inhalers.
+* **Structured Payload Output**: Returns clinical composition, primary indications, manufacturer guidelines, potential adverse side effects, and precise dosage/storage parameters.
+
+### 3. 🗺️ Pan-India Geo-Medical Locator & Google Maps
+* **Granular Navigation**: Combines a robust **State/UT selection dropdown** with a flexible **City, Taluka, or Village free-text search box** to guarantee 100% geographic coverage across India.
+* **Live Spatial Rendering**: Automatically generates an interactive **Google Maps Embed view** alongside verified directory records for diagnostic labs, specialized clinical departments, government infrastructure (AIIMS, Civil Hospitals, PMBJP Kendras), and emergency blood banks.
+
+### 4. 🤖 AI Symptom Triage Assistant
+* **Clinical Guidance**: Analyzes user-described symptom patterns to recommend relevant specialist departments, triage urgency levels, and essential questions for physician consultation.
+
+### 5. 📂 Prescription Scanner & OCR
+* **Document Intelligence**: Upload PDF or Word format medical prescriptions to automatically extract text strings, isolate medication names, and execute instant background safety audits.
+
+---
+
+## 🛠️ Tech Stack
+
+* **Frontend Framework**: Streamlit (Python) featuring custom CSS **Glassmorphism design tokens** (`backdrop-filter: blur`, dynamic dark-mode mesh gradients, and polished box-shadow hierarchies).
+* **AI & Language Processing**: OpenAI API (`gpt-4o`) optimized with strict JSON schema outputs and multi-language systemic prompts.
+* **Geospatial UI**: Google Maps Embed API.
+* **Document Parsers**: `pypdf` and `python-docx` for native binary file extraction.
+
+---
+
+## 📂 Project Directory Structure
+
+```text
+novamed/
+│
+├── .streamlit/
+│   └── secrets.toml          # API credentials configuration (git-ignored)
+├── assets/                   # Logos, banners, and diagrams
+├── app.py                    # Master application logic & UI router
+├── requirements.txt          # Python package dependency manifest
+└── README.md                 # Comprehensive project documentation
+
