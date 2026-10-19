@@ -45,9 +45,13 @@ graph TD
     * 🩺 **NovaMed Master Interface** *(Glassmorphic Streamlit Frontend Engine)*
   │
   ├── 🌐 **Multi-Language Engine** *(Supports 22+ Scheduled Indian Languages)*
+  
   ├── 💊 **Smart Pharmacy Inspector** *(Drug, Syrups, Creams & Supply Analysis)*
+  
   ├── 🗺️ **Geo-Medical Map Locator** *(State/UT + City/Taluka/Village + Google Maps)*
+  
   │
+  
   └── 🤖 **AI Triage & OCR Core** *(Powered by GPT-4o & PyPDF/Docx Document Parsers)*
 ### 1. 🌐 Pan-India Multi-Language Engine
 * **Universal Localization**: Seamlessly shifts UI components, error messages, medical reports, and directory listings across **22 Scheduled Indian Languages** (including Hindi, Marathi, Kannada, Telugu, Tamil, Bengali, Gujarati, etc.) alongside English.
