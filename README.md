@@ -50,7 +50,7 @@ graph TD
   
   ├── 🗺️ **Geo-Medical Map Locator** *(State/UT + City/Taluka/Village + Google Maps)*
   
-  └── 🤖 **AI Triage & OCR Core** *(Powered by GPT-4o & PyPDF/Docx Document Parsers)*
+  └── 🤖 **AI Triage & OCR Core** *(Powered by Gemini & PyPDF/Docx Document Parsers)*
 ### 1. 🌐 Pan-India Multi-Language Engine
 * **Universal Localization**: Seamlessly shifts UI components, error messages, medical reports, and directory listings across **22 Scheduled Indian Languages** (including Hindi, Marathi, Kannada, Telugu, Tamil, Bengali, Gujarati, etc.) alongside English.
 
