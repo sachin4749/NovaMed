@@ -83,7 +83,7 @@ HEALTHCARE_CATEGORIES = {
 }
 
 # ==========================================
-# 2. GEMINI 2.5 FLASH AI ENGINE SETUP
+# 2. GEMINI 3.8 FLASH AI ENGINE SETUP
 # ==========================================
 
 def get_gemini_model():
@@ -101,7 +101,8 @@ def get_gemini_model():
         return None
     
     genai.configure(api_key=api_key)
-    return genai.GenerativeModel('gemini-2.5-flash')
+    # Updated to latest gemini-3.8-flash model as requested by API
+    return genai.GenerativeModel('gemini-3.8-flash')
 
 def analyze_medicine(med_name: str, language: str) -> dict:
     model = get_gemini_model()
@@ -227,7 +228,7 @@ def inject_glassmorphism_css():
 # ==========================================
 
 def main():
-    st.set_page_config(page_title="NovaMed | Gemini 2.5 Medical Suite", page_icon="🩺", layout="wide")
+    st.set_page_config(page_title="NovaMed | Gemini 3.8 Medical Suite", page_icon="🩺", layout="wide")
     inject_glassmorphism_css()
 
     with st.sidebar:
@@ -239,7 +240,7 @@ def main():
         st.markdown("### ℹ️ About NovaMed")
         st.markdown(
             "<p style='color: #94a3b8; font-size: 13px;'>"
-            "NovaMed is your enterprise-grade AI medical intelligence platform powered by Google Gemini 2.5 Flash, providing universal drug analysis, "
+            "NovaMed is your enterprise-grade AI medical intelligence platform powered by Google Gemini 3.8 Flash, providing universal drug analysis, "
             "pan-India geo-targeted hospital directories, interactive Google Maps, and symptom triage."
             "</p>", 
             unsafe_allow_html=True
@@ -251,7 +252,7 @@ def main():
                 NovaMed 🩺
             </h1>
             <p style="margin: 4px 0 0 0; color: #94a3b8; font-size: 15px;">
-                Enterprise AI Medical Intelligence & Pan-India Healthcare Infrastructure Directory (Powered by Gemini 2.5 Flash)
+                Enterprise AI Medical Intelligence & Pan-India Healthcare Infrastructure Directory (Powered by Gemini 3.8 Flash)
             </p>
         </div>
     """, unsafe_allow_html=True)
