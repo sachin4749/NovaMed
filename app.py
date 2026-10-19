@@ -181,7 +181,7 @@ def fetch_directory_results(state: str, location_query: str, category: str, subc
 def ai_symptom_triage(symptoms: str, language: str) -> str:
     model = get_gemini_model()
     if not model:
-        return "API Key missing in secrets."
+        return "API Key missing."
 
     prompt = f"""
     Analyze the patient's symptoms: "{symptoms}".
@@ -265,7 +265,6 @@ def inject_glassmorphism_css():
         box-shadow: 0 12px 30px rgba(56, 189, 248, 0.6) !important;
     }
 
-    /* Tabs Styling */
     .stTabs [data-baseweb="tab-list"] {
         gap: 12px;
         background-color: transparent;
@@ -312,6 +311,15 @@ def main():
             unsafe_allow_html=True
         )
 
+        st.markdown("<hr style='border-color: rgba(56, 189, 248, 0.15);'>", unsafe_allow_html=True)
+        # SK Graphics Branding in Sidebar
+        st.markdown(
+            "<div style='text-align: center; padding: 10px 0;'>"
+            "<p style='color: #38bdf8; font-size: 13px; font-weight: 600; margin: 0;'>Designed with ❤️ by SK Graphics®</p>"
+            "</div>",
+            unsafe_allow_html=True
+        )
+
     st.markdown("""
         <div class="glass-card" style="border-left: 6px solid #38bdf8;">
             <h1 style="margin: 0; font-size: 34px; font-weight: 800; background: linear-gradient(90deg, #38bdf8, #818cf8, #34d399); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
@@ -323,11 +331,12 @@ def main():
         </div>
     """, unsafe_allow_html=True)
 
-    tab_pharmacy, tab_directory, tab_triage, tab_scanner = st.tabs([
+    tab_pharmacy, tab_directory, tab_triage, tab_scanner, tab_feedback = st.tabs([
         "💊 Smart Pharmacy Inspector", 
         "🗺️ Geo-Medical Locator & Maps", 
         "🤖 AI Symptom Triage", 
-        "📂 Multimodal Prescription Scanner"
+        "📂 Multimodal Prescription Scanner",
+        "💬 Feedback & Support"
     ])
 
     with tab_pharmacy:
@@ -335,7 +344,7 @@ def main():
         st.subheader("💊 Universal Drug & Medical Item Inspector")
         st.write("Enter any medicine, tablet, syrup, cream, syringe, or medical supply name below:")
         
-        med_input = st.text_input("Medicine / Item Name", placeholder="e.g. Paracetamol, Azithromycin syrup, Betadine cream, Insulin syringe...")
+        med_input = st.text_input("Medicine / Item Name", placeholder="Enter medicine or medical item name...")
         
         if st.button("🔍 Analyze Medical Item"):
             if not med_input.strip():
@@ -367,7 +376,7 @@ def main():
         with c1:
             selected_state = st.selectbox("Select State / UT", INDIA_STATES_UT)
         with c2:
-            location_query = st.text_input("City / Taluka / Village Name", placeholder="e.g. Solapur, Akkalkot, Jowla, Pune...")
+            location_query = st.text_input("City / Taluka / Village Name", placeholder="Enter city, taluka, or village name...")
 
         c3, c4 = st.columns(2)
         with c3:
@@ -399,7 +408,7 @@ def main():
         st.subheader("🤖 AI Symptom Triage Assistant")
         st.write("Describe your symptoms to receive initial guidance on which medical specialist or department to consult.")
         
-        symptoms_text = st.text_area("Describe Symptoms", placeholder="e.g., Persistent headache, mild fever, and joint fatigue for 3 days...")
+        symptoms_text = st.text_area("Describe Symptoms", placeholder="Describe your symptoms or clinical indicators here...")
         if st.button("💡 Run Symptom Triage"):
             if not symptoms_text.strip():
                 st.warning("Please describe your symptoms.")
@@ -451,6 +460,34 @@ def main():
                                 st.markdown(analysis_report)
                 except Exception as e:
                     st.error(f"Error parsing prescription file: {e}")
+        st.markdown("</div>", unsafe_allow_html=True)
+
+    with tab_feedback:
+        st.markdown("<div class='glass-card'>", unsafe_allow_html=True)
+        st.subheader("💬 Send Us Your Feedback")
+        st.write("We would love to hear your thoughts, feature requests, or bug reports about NovaMed.")
+        
+        # Formspree Embedded Form using HTML
+        formspree_html = """
+        <form action="https://formspree.io/f/xzedwqnb" method="POST" style="display: flex; flex-direction: column; gap: 15px; font-family: 'Plus Jakarta Sans', sans-serif;">
+            <div>
+                <label style="color: #cbd5e1; font-size: 14px; font-weight: 500; display: block; margin-bottom: 6px;">Your Name / Identifier</label>
+                <input type="text" name="name" required placeholder="Enter your name..." style="width: 100%; background: rgba(15, 23, 42, 0.8); color: #f8fafc; border: 1px solid rgba(56, 189, 248, 0.2); border-radius: 12px; padding: 12px 14px; outline: none; box-sizing: border-box;" />
+            </div>
+            <div>
+                <label style="color: #cbd5e1; font-size: 14px; font-weight: 500; display: block; margin-bottom: 6px;">Your Email Address</label>
+                <input type="email" name="email" required placeholder="name@example.com" style="width: 100%; background: rgba(15, 23, 42, 0.8); color: #f8fafc; border: 1px solid rgba(56, 189, 248, 0.2); border-radius: 12px; padding: 12px 14px; outline: none; box-sizing: border-box;" />
+            </div>
+            <div>
+                <label style="color: #cbd5e1; font-size: 14px; font-weight: 500; display: block; margin-bottom: 6px;">Your Feedback / Message</label>
+                <textarea name="message" rows="5" required placeholder="Tell us how we can improve NovaMed..." style="width: 100%; background: rgba(15, 23, 42, 0.8); color: #f8fafc; border: 1px solid rgba(56, 189, 248, 0.2); border-radius: 12px; padding: 12px 14px; outline: none; box-sizing: border-box; resize: vertical;"></textarea>
+            </div>
+            <button type="submit" style="background: linear-gradient(135deg, #0ea5e9 0%, #2563eb 100%); color: #ffffff; font-weight: 700; border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 12px; padding: 12px 26px; cursor: pointer; box-shadow: 0 8px 25px rgba(14, 165, 233, 0.4); transition: all 0.3s ease; width: fit-content;">
+                Submit Feedback 🚀
+            </button>
+        </form>
+        """
+        st.markdown(formspree_html, unsafe_allow_html=True)
         st.markdown("</div>", unsafe_allow_html=True)
 
 if __name__ == "__main__":
