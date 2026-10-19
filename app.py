@@ -1,4 +1,4 @@
-import io
+ import io
 import os
 import json
 from typing import List, Dict, Any
@@ -197,7 +197,7 @@ def ai_symptom_triage(symptoms: str, language: str) -> str:
         return str(e)
 
 # ==========================================
-# 3. NEXT-GEN ULTRA GLASSMORPHISM CSS STYLING
+# 3. CLEAN SIMPLE GLASSMORPHISM CSS STYLING (NO GLOW)
 # ==========================================
 
 def inject_glassmorphism_css():
@@ -226,26 +226,23 @@ def inject_glassmorphism_css():
         border-radius: 20px !important;
         padding: 28px !important;
         margin-bottom: 24px !important;
-        box-shadow: 0 16px 40px 0 rgba(0, 0, 0, 0.5), inset 0 1px 0 0 rgba(255, 255, 255, 0.1) !important;
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 16px 40px 0 rgba(0, 0, 0, 0.5) !important;
     }
 
-    div.glass-card:hover {
-        border-color: rgba(56, 189, 248, 0.35) !important;
-        box-shadow: 0 20px 50px 0 rgba(14, 165, 233, 0.15), inset 0 1px 0 0 rgba(255, 255, 255, 0.2) !important;
-    }
-
+    /* Clean simple inputs without annoying focus glow rings */
     .stTextInput > div > div > input, .stTextArea > div > div > textarea, .stSelectbox > div > div > div {
         background: rgba(15, 23, 42, 0.8) !important;
         color: #f8fafc !important;
         border: 1px solid rgba(56, 189, 248, 0.2) !important;
         border-radius: 12px !important;
         padding: 10px 14px !important;
+        box-shadow: none !important;
     }
 
     .stTextInput > div > div > input:focus, .stTextArea > div > div > textarea:focus {
-        border-color: #38bdf8 !important;
-        box-shadow: 0 0 15px rgba(56, 189, 248, 0.25) !important;
+        border-color: rgba(56, 189, 248, 0.4) !important;
+        box-shadow: none !important;
+        outline: none !important;
     }
 
     .stButton > button {
@@ -255,14 +252,14 @@ def inject_glassmorphism_css():
         border: 1px solid rgba(255, 255, 255, 0.2) !important;
         border-radius: 12px !important;
         padding: 12px 26px !important;
-        box-shadow: 0 8px 25px rgba(14, 165, 233, 0.4) !important;
+        box-shadow: 0 4px 15px rgba(14, 165, 233, 0.3) !important;
         transition: all 0.3s ease;
     }
 
     .stButton > button:hover {
-        transform: translateY(-2px);
+        transform: translateY(-1px);
         background: linear-gradient(135deg, #38bdf8 0%, #1d4ed8 100%) !important;
-        box-shadow: 0 12px 30px rgba(56, 189, 248, 0.6) !important;
+        box-shadow: 0 6px 20px rgba(56, 189, 248, 0.4) !important;
     }
 
     .stTabs [data-baseweb="tab-list"] {
@@ -283,7 +280,6 @@ def inject_glassmorphism_css():
         background: linear-gradient(135deg, rgba(14, 165, 233, 0.2) 0%, rgba(37, 99, 235, 0.2) 100%) !important;
         border: 1px solid #38bdf8 !important;
         color: #f8fafc !important;
-        box-shadow: 0 0 20px rgba(56, 189, 248, 0.2);
     }
     </style>
     """, unsafe_allow_html=True)
@@ -297,6 +293,16 @@ def main():
     inject_glassmorphism_css()
 
     with st.sidebar:
+        # 1. NovaMed Side Branding Header
+        st.markdown(
+            "<div style='text-align: center; padding-bottom: 10px;'>"
+            "<h2 style='margin: 0; color: #38bdf8; font-weight: 800; font-size: 26px;'>NovaMed 🩺</h2>"
+            "<p style='color: #94a3b8; font-size: 11px; margin-top: 2px;'>Medical Intelligence Suite</p>"
+            "</div>",
+            unsafe_allow_html=True
+        )
+        st.markdown("<hr style='border-color: rgba(56, 189, 248, 0.15); margin: 10px 0;'>", unsafe_allow_html=True)
+
         st.markdown("### 🇮🇳 Multi-Language Engine")
         selected_lang_key = st.selectbox("Select Regional Language", list(LANGUAGES.keys()))
         chosen_language = LANGUAGES[selected_lang_key]
@@ -312,10 +318,12 @@ def main():
         )
 
         st.markdown("<hr style='border-color: rgba(56, 189, 248, 0.15);'>", unsafe_allow_html=True)
-        # SK Graphics Branding in Sidebar
+        
+        # 2. SK Graphics Professional Branding with Year and Details
         st.markdown(
-            "<div style='text-align: center; padding: 10px 0;'>"
-            "<p style='color: #38bdf8; font-size: 13px; font-weight: 600; margin: 0;'>Designed with ❤️ by SK Graphics®</p>"
+            "<div style='text-align: center; padding: 6px 0;'>"
+            "<p style='color: #38bdf8; font-size: 13px; font-weight: 700; margin: 0;'>Designed with ❤️ by SK Graphics®</p>"
+            "<p style='color: #94a3b8; font-size: 11px; margin: 4px 0 0 0;'>© 2026 • Professional Branding & Web Solutions</p>"
             "</div>",
             unsafe_allow_html=True
         )
@@ -467,7 +475,6 @@ def main():
         st.subheader("💬 Send Us Your Feedback")
         st.write("We would love to hear your thoughts, feature requests, or bug reports about NovaMed.")
         
-        # Formspree Embedded Form using HTML
         formspree_html = """
         <form action="https://formspree.io/f/xzedwqnb" method="POST" style="display: flex; flex-direction: column; gap: 15px; font-family: 'Plus Jakarta Sans', sans-serif;">
             <div>
@@ -482,7 +489,7 @@ def main():
                 <label style="color: #cbd5e1; font-size: 14px; font-weight: 500; display: block; margin-bottom: 6px;">Your Feedback / Message</label>
                 <textarea name="message" rows="5" required placeholder="Tell us how we can improve NovaMed..." style="width: 100%; background: rgba(15, 23, 42, 0.8); color: #f8fafc; border: 1px solid rgba(56, 189, 248, 0.2); border-radius: 12px; padding: 12px 14px; outline: none; box-sizing: border-box; resize: vertical;"></textarea>
             </div>
-            <button type="submit" style="background: linear-gradient(135deg, #0ea5e9 0%, #2563eb 100%); color: #ffffff; font-weight: 700; border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 12px; padding: 12px 26px; cursor: pointer; box-shadow: 0 8px 25px rgba(14, 165, 233, 0.4); transition: all 0.3s ease; width: fit-content;">
+            <button type="submit" style="background: linear-gradient(135deg, #0ea5e9 0%, #2563eb 100%); color: #ffffff; font-weight: 700; border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 12px; padding: 12px 26px; cursor: pointer; box-shadow: 0 4px 15px rgba(14, 165, 233, 0.3); transition: all 0.3s ease; width: fit-content;">
                 Submit Feedback 🚀
             </button>
         </form>
