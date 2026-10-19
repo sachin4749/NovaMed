@@ -36,26 +36,25 @@ Whether you need to inspect an unfamiliar prescription drug composition, locate 
 
 ---
 
-## 🏗️ Core Modules & Architecture
-┌────────────────────────────────────────────────────────┐
-│               NovaMed Master Interface                 │
-│         (Glassmorphic Streamlit Frontend Engine)       │
-└──────────────────────────┬─────────────────────────────┘
-│
-┌───────────────────┼───────────────────┐
-▼                   ▼                   ▼
-┌──────────────┐    ┌──────────────┐    ┌──────────────┐
-│ 🌐 Multi-    │    │ 💊 Smart     │    │ 🗺️ Geo-      │
-│ Lang Engine  │    │ Pharmacy     │    │ Medical Map  │
-│ (22+ Indian) │    │ Inspector    │    │ Locator      │
-└──────────────┘    └──────────────┘    └──────────────┘
-│                   │                   │
-└───────────────────┼───────────────────┘
-▼
-┌─────────────────────────┐
-│ 🤖 AI Triage & OCR Core │
-│   (GPT-4o + PyPDF/Docx) │
-└─────────────────────────┘
+┌─────────────────────────────────────────────────────────────────┐
+│                    NovaMed Master Interface                     │
+│            (Glassmorphic Streamlit Frontend Engine)             │
+└────────────────────────────────┬────────────────────────────────┘
+                                 │
+         ┌───────────────────────┼───────────────────────┐
+         ▼                       ▼                       ▼
+┌─────────────────┐     ┌─────────────────┐     ┌─────────────────┐
+│ 🌐 Multi-Lang   │     │ 💊 Smart        │     │ 🗺️ Geo-Medical  │
+│ Engine (22+     │     │ Pharmacy        │     │ Map Locator &   │
+│ Regional)       │     │ Inspector       │     │ Google Maps     │
+└────────┬────────┘     └────────┬────────┘     └────────┬────────┘
+         │                       │                       │
+         └───────────────────────┼───────────────────────┘
+                                 ▼
+┌─────────────────────────────────────────────────────────────────┐
+│                    🤖 AI Triage & OCR Core                      │
+│                   (GPT-4o + PyPDF / Docx)                       │
+└─────────────────────────────────────────────────────────────────┘
 
 ### 1. 🌐 Pan-India Multi-Language Engine
 * **Universal Localization**: Seamlessly shifts UI components, error messages, medical reports, and directory listings across **22 Scheduled Indian Languages** (including Hindi, Marathi, Kannada, Telugu, Tamil, Bengali, Gujarati, etc.) alongside English.
