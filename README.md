@@ -43,7 +43,7 @@ graph TD
     classDef aiCore fill:#090d16,stroke:#818cf8,stroke-width:2px,color:#fff,font-weight:bold;
 
     * 🩺 **NovaMed Master Interface** *(Glassmorphic Streamlit Frontend Engine)*
-  │
+  
   ├── 🌐 **Multi-Language Engine** *(Supports 22+ Scheduled Indian Languages)*
   
   ├── 💊 **Smart Pharmacy Inspector** *(Drug, Syrups, Creams & Supply Analysis)*
