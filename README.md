@@ -36,26 +36,22 @@ Whether you need to inspect an unfamiliar prescription drug composition, locate 
 
 ---
 
-┌─────────────────────────────────────────────────────────────────┐
-│                    NovaMed Master Interface                     │
-│            (Glassmorphic Streamlit Frontend Engine)             │
-└────────────────────────────────┬────────────────────────────────┘
-                                 │
-         ┌───────────────────────┼───────────────────────┐
-         ▼                       ▼                       ▼
-┌─────────────────┐     ┌─────────────────┐     ┌─────────────────┐
-│ 🌐 Multi-Lang   │     │ 💊 Smart        │     │ 🗺️ Geo-Medical  │
-│ Engine (22+     │     │ Pharmacy        │     │ Map Locator &   │
-│ Regional)       │     │ Inspector       │     │ Google Maps     │
-└────────┬────────┘     └────────┬────────┘     └────────┬────────┘
-         │                       │                       │
-         └───────────────────────┼───────────────────────┘
-                                 ▼
-┌─────────────────────────────────────────────────────────────────┐
-│                    🤖 AI Triage & OCR Core                      │
-│                   (GPT-4o + PyPDF / Docx)                       │
-└─────────────────────────────────────────────────────────────────┘
+graph TD
+    %% Styling Nodes
+    classDef mainHeader fill:#090d16,stroke:#0ea5e9,stroke-width:2px,color:#fff,font-weight:bold;
+    classDef moduleBox fill:#02182b,stroke:#38bdf8,stroke-width:1px,color:#fff;
+    classDef aiCore fill:#090d16,stroke:#818cf8,stroke-width:2px,color:#fff,font-weight:bold;
 
+    A["🩺 NovaMed Master Interface<br/><i>(Glassmorphic Streamlit Frontend Engine)</i>"] :::mainHeader
+    
+    A --> B["🌐 Multi-Lang Engine<br/><i>(22+ Regional Languages)</i>"] :::moduleBox
+    A --> C["💊 Smart Pharmacy Inspector<br/><i>(Drug & Medical Supply Analysis)</i>"] :::moduleBox
+    A --> D["🗺️ Geo-Medical Map Locator<br/><i>(State/UT + Village & Google Maps)</i>"] :::moduleBox
+    
+    B --> E["🤖 AI Triage & OCR Core Engine<br/><i>(OpenAI GPT-4o + PyPDF/Docx Parser)</i>"] :::aiCore
+    C --> E
+    D --> E
+    
 ### 1. 🌐 Pan-India Multi-Language Engine
 * **Universal Localization**: Seamlessly shifts UI components, error messages, medical reports, and directory listings across **22 Scheduled Indian Languages** (including Hindi, Marathi, Kannada, Telugu, Tamil, Bengali, Gujarati, etc.) alongside English.
 
